@@ -2,7 +2,7 @@ import React from "react";
 
 const Register = () => (
     <div>
-      <h2>About</h2>
+      <h2>Registration Page</h2>
     </div>
   )
   
