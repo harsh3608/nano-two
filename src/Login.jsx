@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./styles/register.css";
+import "./styles/login.css";
 
 // const Register = () => (
 //   <div>
@@ -49,7 +49,7 @@ import "./styles/register.css";
 
 // );
 
-class RegisterForm extends Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props);
 
@@ -134,12 +134,12 @@ class RegisterForm extends Component {
   }
 }
 
-const Register = () => {
+const Login = () => {
   return (
     <div>
-      <RegisterForm />
+      <LoginForm />
     </div>
   );
 };
 
-export default Register;
+export default Login;

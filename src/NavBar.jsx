@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/style.css";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import Home from "./Home";
-import Register from "./Register";
+import Login from "./Login";
 import About from "./About";
 import NotFound from "./NotFound";
 
@@ -42,11 +42,11 @@ let NavBar = (props) => {
                 )}
               </Route>
               &nbsp;&nbsp;
-              <Route path="/register">
+              <Route path="/login">
                 {() => (
                   <li className="nav-item">
-                    <Link className="nav-link" to="/register">
-                      Register
+                    <Link className="nav-link" to="/login">
+                      Login
                     </Link>
                   </li>
                 )}
@@ -83,7 +83,7 @@ let NavBar = (props) => {
         <div>
           <Switch>
             <Route path="/home" component={Home} />
-            <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
             <Route path="/about" component={About} />
             <Route component={NotFound} />
           </Switch>
