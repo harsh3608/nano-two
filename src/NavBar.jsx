@@ -11,12 +11,12 @@ let NavBar = (props) => {
   return (
     <div>
       <BrowserRouter>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand px-4" >
+        <nav className="navbar navbar-expand-lg navbar-light bg-info">
+          <a className="navbar-brand px-4 text-white" >
             React Nano Two
           </a>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler text-white"
             type="button"
             data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -35,7 +35,7 @@ let NavBar = (props) => {
               <Route path="/home">
                 {() => (
                   <li className="nav-item active">
-                    <Link className="nav-link" to="/home">
+                    <Link className="nav-link text-white" to="/home">
                       Home
                     </Link>
                   </li>
@@ -45,7 +45,7 @@ let NavBar = (props) => {
               <Route path="/login">
                 {() => (
                   <li className="nav-item">
-                    <Link className="nav-link" to="/login">
+                    <Link className="nav-link text-white" to="/login">
                       Login
                     </Link>
                   </li>
@@ -55,7 +55,7 @@ let NavBar = (props) => {
               <Route path="/about">
                 {() => (
                   <li className="nav-item">
-                    <Link className="nav-link" to="/about">
+                    <Link className="nav-link text-white" to="/about">
                       About
                     </Link>
                   </li>
