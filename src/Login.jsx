@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./styles/login.css";
+import { withRouter, useHistory } from 'react-router-dom';
+
 
 class LoginForm extends Component {
   constructor(props) {
@@ -15,6 +17,8 @@ class LoginForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  
+
   emailChange(event) {
     this.setState({
       email: event.target.value,
@@ -28,8 +32,35 @@ class LoginForm extends Component {
   }
 
   handleSubmit(event) {
+    const history = useHistory();
+
     console.log("form has been submitted: ");
     console.log(this.state.email + " - " + this.state.password);
+
+    fetch("https://localhost:7231/api/Account/Login", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+      })
+    })
+    .then(res => res.json())
+    .then((result) => {
+      if(result.isSuccess){
+        window.alert("logged in successfully.");
+        console.log("logged in successfully.");
+        localStorage.setItem("token", result.response.token);
+        history.push('/home');
+      }
+      else{
+        console.log("log in failed.");
+      }
+    })
+
     event.preventDefault();
   }
 
@@ -49,7 +80,7 @@ class LoginForm extends Component {
                   type="email"
                   className="form-control"
                   id="email"
-                  value={this.state.email} 
+                  value={this.state.email}
                   onChange={this.emailChange}
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
@@ -67,7 +98,7 @@ class LoginForm extends Component {
                   type="password"
                   className="form-control"
                   id="password"
-                  value={this.state.password} 
+                  value={this.state.password}
                   onChange={this.passwordChange}
                   placeholder="Password"
                 />
@@ -94,4 +125,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);
