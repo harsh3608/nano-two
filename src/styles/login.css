@@ -6,3 +6,7 @@
     border: solid 1px ;
 }
 
+.form-box:hover{
+    scale:1.2;
+    box-shadow: inset;
+}

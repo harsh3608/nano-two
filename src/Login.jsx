@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./styles/login.css";
-import { withRouter, useHistory } from 'react-router-dom';
-
+import { withRouter, useHistory } from "react-router-dom";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -10,6 +9,7 @@ class LoginForm extends Component {
     this.state = {
       email: "",
       password: "",
+      showPassword: false,
     };
 
     this.emailChange = this.emailChange.bind(this);
@@ -17,7 +17,10 @@ class LoginForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  
+  togglePasswordVisibility = () => {
+    this.state.showPassword = !this.state.showPassword;
+    console.log(this.state.showPassword);
+  };
 
   emailChange(event) {
     this.setState({
@@ -46,20 +49,19 @@ class LoginForm extends Component {
       body: JSON.stringify({
         email: this.state.email,
         password: this.state.password,
-      })
+      }),
     })
-    .then(res => res.json())
-    .then((result) => {
-      if(result.isSuccess){
-        window.alert("logged in successfully.");
-        console.log("logged in successfully.");
-        localStorage.setItem("token", result.response.token);
-        history.push('/home');
-      }
-      else{
-        console.log("log in failed.");
-      }
-    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.isSuccess) {
+          window.alert("logged in successfully.");
+          console.log("logged in successfully.");
+          localStorage.setItem("token", result.response.token);
+          history.push("/home");
+        } else {
+          console.log("log in failed.");
+        }
+      });
 
     event.preventDefault();
   }
@@ -95,13 +97,26 @@ class LoginForm extends Component {
               <div className="form-group">
                 <label htmlFor="password">Password</label>
                 <input
-                  type="password"
+                  type="this.state.showPassword ? 'text' : 'password'"
                   className="form-control"
                   id="password"
                   value={this.state.password}
                   onChange={this.passwordChange}
                   placeholder="Password"
                 />
+                <div className="input-group-append">
+                  <button
+                    type="button"
+                    className="btn btn-outline-secondary"
+                    onClick={this.togglePasswordVisibility}
+                  >
+                    {this.state.showPassword ? (
+                      <span className="material-icons">visibility</span>
+                    ) : (
+                      <span className="material-icons">visibility_off</span>
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
 
