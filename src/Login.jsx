@@ -17,9 +17,17 @@ class LoginForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  onChange = () => {
+    this.togglePasswordVisibility();
+  };
+
   togglePasswordVisibility = () => {
-    this.state.showPassword = !this.state.showPassword;
-    console.log(this.state.showPassword);
+    // this.state.showPassword = !this.state.showPassword;
+    // console.log(this.state.showPassword);
+
+    this.setState((prevState) => ({
+      showPassword: !prevState.showPassword,
+    }));
   };
 
   emailChange(event) {
@@ -97,26 +105,30 @@ class LoginForm extends Component {
               <div className="form-group">
                 <label htmlFor="password">Password</label>
                 <input
-                  type="this.state.showPassword ? 'text' : 'password'"
+                  type={this.state.showPassword ? "text" : "password"}
                   className="form-control"
                   id="password"
                   value={this.state.password}
                   onChange={this.passwordChange}
                   placeholder="Password"
                 />
-                <div className="input-group-append">
-                  <button
-                    type="button"
-                    className="btn btn-outline-secondary"
-                    onClick={this.togglePasswordVisibility}
-                  >
-                    {this.state.showPassword ? (
-                      <span className="material-icons">visibility</span>
-                    ) : (
-                      <span className="material-icons">visibility_off</span>
-                    )}
-                  </button>
-                </div>
+                <span className="icon-container" >
+                  { this.state.showPassword ? (
+                    <span
+                      className="material-icons"
+                      onClick={this.togglePasswordVisibility}
+                    >
+                      visibility_off
+                    </span>
+                  ) : (
+                    <span
+                      className="material-icons"
+                      onClick={this.togglePasswordVisibility}
+                    >
+                      visibility
+                    </span>
+                  )}
+                </span>
               </div>
             </div>
 
