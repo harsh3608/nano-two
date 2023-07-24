@@ -11,9 +11,10 @@ let NavBar = (props) => {
   return (
     <div>
       <BrowserRouter>
-        <nav className="navbar navbar-expand-lg navbar-light bg-info">
-          <a className="navbar-brand px-4 text-white" >
-            React Nano Two
+        <nav className="navbar navbar-expand-lg navbar-light ">
+          <a className="navbar-brand px-4 text-dark" >
+            <strong>React ShowTime</strong>
+            
           </a>
           <button
             className="navbar-toggler text-white"
@@ -35,8 +36,8 @@ let NavBar = (props) => {
               <Route path="/home">
                 {() => (
                   <li className="nav-item active">
-                    <Link className="nav-link text-white" to="/home">
-                      Home
+                    <Link className="nav-link text-dark" to="/home">
+                      <strong>Home</strong>
                     </Link>
                   </li>
                 )}
@@ -45,8 +46,8 @@ let NavBar = (props) => {
               <Route path="/login">
                 {() => (
                   <li className="nav-item">
-                    <Link className="nav-link text-white" to="/login">
-                      Login
+                    <Link className="nav-link text-dark" to="/login">
+                      <strong>Login</strong>
                     </Link>
                   </li>
                 )}
@@ -55,15 +56,15 @@ let NavBar = (props) => {
               <Route path="/about">
                 {() => (
                   <li className="nav-item">
-                    <Link className="nav-link text-white" to="/about">
-                      About
+                    <Link className="nav-link text-dark" to="/about">
+                      <strong>About</strong>
                     </Link>
                   </li>
                 )}
               </Route>
             </ul>
 
-            <form className="form-inline my-2 my-lg-0 d-flex px-4">
+            {/* <form className="form-inline my-2 my-lg-0 d-flex px-4">
               <input
                 className="form-control mr-sm-2 mx-3"
                 type="search"
@@ -71,12 +72,12 @@ let NavBar = (props) => {
                 aria-label="Search"
               />
               <button
-                className="btn btn-outline-success my-2 my-sm-0"
+                className="btn btn-success my-2 my-sm-0"
                 type="submit"
               >
                 Search
               </button>
-            </form>
+            </form> */}
           </div>
         </nav>
 
